@@ -47,12 +47,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // Thymeleaf login page
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/login-success", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
